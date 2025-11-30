@@ -1,4 +1,3 @@
-/*
 // --- CloudFront Origin Access Control --- //
 resource "aws_cloudfront_origin_access_control" "frontend_oac" {
   name = "origin-access-control-frontend"
@@ -14,7 +13,7 @@ resource "aws_cloudfront_distribution" "s3_frontend_distribution" {
   # Sets S3 Bucket as origin and use OAI to access it
   origin {
     domain_name = aws_s3_bucket.frontend_bucket.bucket_regional_domain_name
-    origin_id = "S3-frontend-bucket"
+    origin_id = "website-frontend-s3"
 
     # Attach Origin Access Control
     origin_access_control_id = aws_cloudfront_origin_access_control.frontend_oac.id
@@ -40,7 +39,7 @@ resource "aws_cloudfront_distribution" "s3_frontend_distribution" {
   default_cache_behavior {
     allowed_methods = ["GET", "HEAD", "OPTIONS"] # HTTP methods allowed for caching behaviour
     cached_methods = ["GET", "HEAD"] # Methods to be cached (The actual reads)
-    target_origin_id = "S3-frontend-bucket" # Links cache behaviour to the origin
+    target_origin_id = "website-frontend-s3" # Links cache behaviour to the origin
 
     forwarded_values {
       query_string = false
@@ -70,4 +69,3 @@ resource "aws_cloudfront_distribution" "s3_frontend_distribution" {
     minimum_protocol_version = "TLSv1.2_2021"
   }
 }
-*/

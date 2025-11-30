@@ -4,7 +4,6 @@ variable "frontend_bucket_name" {
   description = "Name of bucket used to host frontend files"
 }
 
-/*
 // --- CLOUDFRONT --- //
 variable "dist_aliases" {
   type = list(string)
@@ -15,4 +14,3 @@ variable "certificate_arn" {
   type = string
   description = "ARN of ACM certificate"
 }
-*/
