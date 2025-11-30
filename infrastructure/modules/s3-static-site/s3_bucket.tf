@@ -23,7 +23,6 @@ resource "aws_s3_bucket_ownership_controls" "static_site_bucket_ownership" {
   }
 }
 
-/*
 // --- Bucket Policies --- //
 resource "aws_s3_bucket_policy" "front_bucket_policy" {
   bucket = aws_s3_bucket.frontend_bucket.id
@@ -62,7 +61,7 @@ resource "aws_s3_bucket_public_access_block" "frontend_public_access_block" {
   ignore_public_acls = true
   restrict_public_buckets = true
 }
-*/
+
 
 resource "aws_s3_bucket_versioning" "frontend_versioning" {
   bucket = aws_s3_bucket.frontend_bucket.id
