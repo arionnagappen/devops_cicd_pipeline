@@ -5,10 +5,10 @@ variable "frontend_bucket_name" {
 }
 
 // --- CLOUDFRONT --- //
-variable "dist_aliases" {
+/*variable "dist_aliases" {
   type = list(string)
   description = "List of aliases for cloudfront distribution"
-}
+}*/
 
 variable "certificate_arn" {
   type = string
