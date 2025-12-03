@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: Email Content
         run: |
-          RESULT="${{needs.deploy.result}}
+          RESULT="${{needs.deploy.result}}"
 
           if [ "$RESULT" = "success" ]; then
             echo "SUBJECT=Deployment Successful" >> $GITHUB_ENV
