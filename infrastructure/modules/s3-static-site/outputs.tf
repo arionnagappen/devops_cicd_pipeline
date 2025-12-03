@@ -11,7 +11,7 @@ output "cloudfront_url" {
 }
 
 
-output "dist_aliases" {
+/*output "dist_aliases" {
   value = var.dist_aliases
-}
+}*/
 

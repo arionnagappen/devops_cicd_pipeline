@@ -21,3 +21,36 @@ jobs:
 
       - name: Upload to S3
         run: aws s3 sync frontend/ s3://cloudpipe-website-s3
+
+  email_notification:
+    needs: [ deploy ] # wait for deploy job to run
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Email Content
+        run: |
+          RESULT="${{needs.deploy.result}}
+
+          if [ "$RESULT" = "success" ]; then
+            echo "SUBJECT=Deployment Successful" >> $GITHUB_ENV
+            echo "BODY=Your deployment was a success" >> $GITHUB_ENV
+          else
+            echo "SUBJECT=Deployment Failed" >> $GITHUB_ENV
+            echo "BODY=Your deployment failed" >> $GITHUB_ENV
+          fi
+
+      - name: Send Email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: ${{ env.SUBJECT }}
+          to: ${{ secrets.EMAIL_USERNAME }}   # change this if you want to send to another address
+          from: "GitHub Actions <${{ secrets.EMAIL_USERNAME }}>"
+          body: ${{ env.BODY }}
+
+
