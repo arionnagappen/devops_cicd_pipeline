@@ -4,48 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quick Test Page</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 2rem;
-      background-color: #f8f9fa;
-      color: #333;
-    }
-    h1 {
-      /*color: #007bff;*/
-      color: maroon;
-    }
-    textarea {
-      width: 100%;
-      height: 120px;
-      margin-top: 1rem;
-      font-family: monospace;
-      font-size: 14px;
-      padding: 8px;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: #007bff;
-      border: none;
-      color: white;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 0.5rem;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    #output {
-      background: #222;
-      color: #0f0;
-      padding: 10px;
-      margin-top: 1rem;
-      min-height: 80px;
-      border-radius: 4px;
-      font-family: monospace;
-      white-space: pre-wrap;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <h1>HTML + JS Quick Tester</h1>
@@ -53,23 +12,10 @@
 
   <textarea id="code" placeholder="console.log('Hello World');"></textarea>
   <br />
-  <button onclick="runCode()">Run</button>
+  <button id="runBtn">Run</button>
 
   <div id="output"></div>
 
-  <script>
-    function runCode() {
-      const code = document.getElementById('code').value;
-      const output = document.getElementById('output');
-      output.textContent = '';
-      try {
-        const result = eval(code);
-        if (result !== undefined) output.textContent += result + '\n';
-      } catch (err) {
-        output.textContent = 'Error: ' + err.message;
-      }
-      console.log('Executed:', code);
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
