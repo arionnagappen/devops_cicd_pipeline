@@ -37,7 +37,9 @@ jobs:
             echo "BODY=Your deployment was a success" >> $GITHUB_ENV
           else
             echo "SUBJECT=Deployment Failed" >> $GITHUB_ENV
-            echo "BODY=Your deployment failed" >> $GITHUB_ENV
+            LOG_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+            echo "LOG_URL=$LOG_URL" >> $GITHUB_ENV
+            echo "BODY=Your deployment failed. View logs here: $LOG_URL" >> $GITHUB_ENV
           fi
 
       - name: Send Email
