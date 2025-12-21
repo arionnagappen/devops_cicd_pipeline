@@ -20,7 +20,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Upload to S3
-        run: aws s3 sync frontend/ s3://cloudpipe-website-s
+        run: aws s3 sync frontend/ s3://cloudpipe-website-s3
 
   email_notification:
     needs: [ deploy ] # wait for deploy job to run
