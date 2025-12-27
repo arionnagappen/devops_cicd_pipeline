@@ -14,3 +14,8 @@ variable "certificate_arn" {
   type = string
   description = "ARN of ACM certificate"
 }
+
+variable "active_environment" {
+  type = string
+  description = "Path Origin for CloudFront"
+}
