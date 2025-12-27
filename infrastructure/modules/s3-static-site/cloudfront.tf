@@ -14,7 +14,7 @@ resource "aws_cloudfront_distribution" "s3_frontend_distribution" {
   origin {
     domain_name = aws_s3_bucket.frontend_bucket.bucket_regional_domain_name
     origin_id = "website-frontend-s3"
-    origin_path = "/green"
+    origin_path = var.active_environment
 
     # Attach Origin Access Control
     origin_access_control_id = aws_cloudfront_origin_access_control.frontend_oac.id
